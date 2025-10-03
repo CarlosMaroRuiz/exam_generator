@@ -121,17 +121,7 @@ def generate_exam_pdf(questions: list, title: str, description: str) -> bytes:
 
 
 def save_pdf_to_file(pdf_bytes: bytes, filename: str, directory: str = "exams") -> str:
-    """
-    Guarda el PDF en el sistema de archivos
-    
-    Args:
-        pdf_bytes: Contenido del PDF en bytes
-        filename: Nombre del archivo
-        directory: Directorio donde guardar el archivo
-        
-    Returns:
-        str: Ruta completa del archivo guardado
-    """
+
     # Crear directorio si no existe
     os.makedirs(directory, exist_ok=True)
     
@@ -154,24 +144,7 @@ def upload_pdf_to_minio(
     secret_key: str = "minioadmin123",
     secure: bool = False
 ) -> dict:
-    """
-    Sube un PDF a MinIO
-    
-    Args:
-        pdf_bytes: Contenido del PDF en bytes
-        filename: Nombre del archivo en MinIO
-        bucket_name: Nombre del bucket
-        endpoint: Endpoint de MinIO (ej: 'localhost:9000' o 'minio.example.com:9000')
-        access_key: Access key de MinIO
-        secret_key: Secret key de MinIO
-        secure: Si usar HTTPS (True) o HTTP (False)
-        
-    Returns:
-        dict: Información del archivo subido
-        
-    Raises:
-        S3Error: Si hay error al subir el archivo
-    """
+   
     try:
         # Crear cliente de MinIO
         client = Minio(
